@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1></h1>
+{% for item in machine_list%}
+<div class="col-md6 border rounded">
+    <a href="{{item.id}}">
+    <h2>{{item.type}}</h2>
+    <div>
+        <img src={{item.main_pic}}>
+    </div>
+        </a>
+</div>
+{% endfor %}
+{% endblock %}

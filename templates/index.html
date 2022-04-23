@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block video %}
+<div id="vidDiv" class="my_overlay">
+    <video id="backVideo" loop="loop" autoplay="autoplay" preload="auto">
+            <source src="static/bv3.webm" type="video/webm"></source>
+    </video>
+    </div>
+{% endblock %}
+
+{% block content %}
+<h1></h1>
+{% for item in news%}
+<div class="col-md6 border rounded">
+    <h2>{{item.title}}</h2>
+    <div>
+        {{item.content}}
+    </div>
+    <div>
+        Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

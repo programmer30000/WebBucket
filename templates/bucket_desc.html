@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<H1>{{bucket.name}}</H1>
+
+ <div class="text-end">
+
+{{bucket.full_html}}
+ </div>
+Цена {{bucket.price}} руб.
+
+    {% if current_user.is_authenticated %}
+        <div class="text-end">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Отзыв..." aria-label="Reviews">
+        <a href="\reports"><button type="button" class="btn btn-outline-light me-2">Оставить отзыв</button></a>
+        </form>
+       </div>
+    {% endif %}
+
+{% endblock %}

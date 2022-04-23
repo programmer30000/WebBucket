@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+      <style>
+	    .my_overlay {width: 100%; height:90%; top:10%; display:block;}
+	    #vidDiv {
+    		top: 100; bottom: 0; left: 0; right: 0;
+	    	position: fixed;
+		    overflow: hidden;
+	    }
+	    #backVideo {
+		top: 100; left: 0;
+		position: absolute;
+		width: auto; height: auto;
+		min-width: 100%;
+		min-height: 100%;
+	    }
+      </style>
+    <title>{{title}}</title>
+</head>
+<body>
+    {% block video %}{% endblock %}
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <h1>Ковшегрыз        </h1>
+        </a><p>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary">Главная</a></li>
+          <li><a href="/products" class="nav-link px-2 text-white">Продукция</a>
+          </li>
+          <li><a href="/factory" class="nav-link px-2 text-white">Производство</a></li>
+          <li><a href="/gallery" class="nav-link px-2 text-white">Галерея</a></li>
+          <li><a href="/about" class="nav-link px-2 text-white">О Компании</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Поиск..." aria-label="Search">
+        </form>
+
+        {% if current_user.is_authenticated %}
+        <div class="text-end">
+           <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+            <a href="\logout"><button type="button" class="btn btn-outline-light me-2">Выйти</button></a>
+        </div>
+
+
+        {% else %}
+        <div class="text-end">
+            <a href="\login"><button type="button" class="btn btn-outline-light me-2">Вход</button></a>
+          <a href="\register"><button type="button" class="btn btn-warning">Регистрация</button></a>
+        </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </header>
+<!-- Begin page content -->
+<main role="main" class="container">
+
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
+
